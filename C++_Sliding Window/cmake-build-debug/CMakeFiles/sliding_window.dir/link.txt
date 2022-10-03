@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/sliding_window.dir/main.cpp.o CMakeFiles/sliding_window.dir/Solution.cpp.o  -o sliding_window 

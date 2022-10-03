@@ -1,0 +1,3 @@
+/mnt/c/development/sliding window/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/mnt/c/development/sliding window/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/development/sliding window/cmake-build-debug/CMakeFiles/sliding_window.dir

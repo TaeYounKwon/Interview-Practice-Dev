@@ -1,0 +1,4 @@
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/mnt/c/development/sliding window"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /mnt/c/development/sliding window/cmake-build-debug
