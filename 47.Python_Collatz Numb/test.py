@@ -16,6 +16,7 @@ def solution(num):
     
     return cnt
 
+# 방법 2
 def collatz(num):
     for i in range(500):
         num=num/2 if num%2==0 else num*3+1
