@@ -1,25 +1,21 @@
-def solution(num):
-    cnt = 0
-    if num == 1:
-        return 0
-    
-    while num!=1:
-        if num % 2 == 1:
-            num = num*3 +1 
-        else:
-            num = num/2 
-        cnt +=1
-        if num == 1:
-            break
-        elif cnt >500:
-            return -1
-    
-    return cnt
+import math
 
-# 방법 2
-def collatz(num):
-    for i in range(500):
-        num=num/2 if num%2==0 else num*3+1
-        if num==1:
-            return i+1
-    return -1
+def solution(arr):
+    answer = []
+    if len(arr)==0 or len(arr)==1:
+        return [-1]
+    
+    mnumb = math.inf
+    for i in arr:
+        if mnumb>i:
+            mnumb=i
+            
+    arr.remove(mnumb)
+    answer = arr
+    
+    return answer
+
+#방법 2
+def rm_small(mylist):
+    # 함수를 완성하세요
+    return [i for i in mylist if i > min(mylist)]
