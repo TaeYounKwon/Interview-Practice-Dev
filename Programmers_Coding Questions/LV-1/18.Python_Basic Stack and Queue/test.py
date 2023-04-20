@@ -9,3 +9,11 @@ def solution(arr):
             answer.append(val)
             
     return answer
+
+def no_continuous(s):
+    # 함수를 완성하세요
+    a = []
+    for i in s:
+        if a[-1:] == [i]: continue
+        a.append(i)
+    return a
