@@ -1,24 +1,27 @@
-#신입사원 무지는 게시판 불량 이용자를 신고하고 처리 결과를 메일로 발송하는 
-# 시스템을 개발하려 합니다. 무지가 개발하려는 시스템은 다음과 같습니다.
-# 각 유저는 한 번에 한 명의 유저를 신고할 수 있습니다.
-# 신고 횟수에 제한은 없습니다. 서로 다른 유저를 계속해서 신고할 수 있습니다.
-# 한 유저를 여러 번 신고할 수도 있지만, 동일한 유저에 대한 신고 횟수는 1회로 처리됩니다.
-# k번 이상 신고된 유저는 게시판 이용이 정지되며, 해당 유저를 신고한 모든 유저에게 정지 사실을 메일로 발송합니다.
-# 유저가 신고한 모든 내용을 취합하여 마지막에 한꺼번에 게시판 이용 정지를 시키면서 정지 메일을 발송합니다.
+# 얀에서는 매년 달리기 경주가 열립니다. 
+# 해설진들은 선수들이 자기 바로 앞의 선수를 추월할 때 추월한 선수의 이름을 부릅니다. 
+# 예를 들어 1등부터 3등까지 "mumu", "soe", "poe" 선수들이 순서대로 달리고 있을 때, 
+# 해설진이 "soe"선수를 불렀다면 2등인 "soe" 선수가 1등인 "mumu" 선수를 추월했다는 것입니다. 
+# 즉 "soe" 선수가 1등, "mumu" 선수가 2등으로 바뀝니다.
 
-def solution(id_list, report, k):
-    answer = [0] * len(id_list)
-    reports = {x:0 for x in id_list}
-    print(answer)
-    print(reports)
+def solution(p, c):
+    answer = []
+    rank = dict()
+    name = dict()
+    for i in range(len(p)):
+        name[p[i]] = i
+        rank[i] = p[i]
+        
+    for i in c:
+        before = name[i]
+        tmp_name = rank[before-1]
+        name[i] -= 1
+        name[tmp_name] +=1
+        rank[before] = tmp_name
+        rank[before-1] = i
     
-    for i in set(report):
-        reports[i.split()[1]] +=1
-    print(reports)
     
-    for j in set(report):
-        if reports[j.split()[1]] >=k:
-            answer[id_list.index(j.split()[0])] +=1
-    
+    for keys, vals in rank.items():
+        answer.append(vals)
     return answer
 
