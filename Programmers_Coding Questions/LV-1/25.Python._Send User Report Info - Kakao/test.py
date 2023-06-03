@@ -1,27 +1,48 @@
-# 얀에서는 매년 달리기 경주가 열립니다. 
-# 해설진들은 선수들이 자기 바로 앞의 선수를 추월할 때 추월한 선수의 이름을 부릅니다. 
-# 예를 들어 1등부터 3등까지 "mumu", "soe", "poe" 선수들이 순서대로 달리고 있을 때, 
-# 해설진이 "soe"선수를 불렀다면 2등인 "soe" 선수가 1등인 "mumu" 선수를 추월했다는 것입니다. 
-# 즉 "soe" 선수가 1등, "mumu" 선수가 2등으로 바뀝니다.
+# 나만의 카카오 성격 유형 검사지를 만들려고 합니다.
+# 성격 유형 검사는 다음과 같은 4개 지표로 성격 유형을 구분합니다. 성격은 각 지표에서 두 유형 중 하나로 결정됩니다.
+# https://school.programmers.co.kr/learn/courses/30/lessons/118666
+def solution(survey, choices):
+    answer = ''
+    result = {
+        'R':0,
+        'T':0,
+        'C':0,
+        'F':0,
+        'J':0,
+        'M':0,
+        'A':0,
+        'N':0
+    }
+    
+    for i in range(len(survey)):
+        score = choices[i]
+        letter_1 = survey[i][0]
+        letter_2 = survey[i][1]
+        if score < 4:
+            result[letter_1] += 4-score
+        elif score>4:
+            result[letter_2] += score-4
+        else:
+            pass
+    
+    if result['R']>=result['T']:
+        answer+='R'
+    else:
+        answer+='T'
+    
+    if result['C']>=result['F']:
+        answer+='C'
+    else:
+        answer+='F'
 
-def solution(p, c):
-    answer = []
-    rank = dict()
-    name = dict()
-    for i in range(len(p)):
-        name[p[i]] = i
-        rank[i] = p[i]
-        
-    for i in c:
-        before = name[i]
-        tmp_name = rank[before-1]
-        name[i] -= 1
-        name[tmp_name] +=1
-        rank[before] = tmp_name
-        rank[before-1] = i
+    if result['J']>=result['M']:
+        answer+='J'
+    else:
+        answer+='M'
+
+    if result['A']>=result['N']:
+        answer+='A'
+    else:
+        answer+='N'
     
-    
-    for keys, vals in rank.items():
-        answer.append(vals)
     return answer
-
