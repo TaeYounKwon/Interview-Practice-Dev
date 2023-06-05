@@ -1,14 +1,36 @@
-# https://school.programmers.co.kr/learn/courses/30/lessons/72410
+# https://school.programmers.co.kr/learn/courses/30/lessons/155652
 
-import re
+def count_skip(start,skip,add):
+    cnt = 0
+    while True:
+        if start in skip:
+            start+=1
+        elif cnt!=add:
+            start+=1
+            cnt+=1
+            
+        if start>122:
+            start-=26
+            
+        if cnt==add and start not in skip:
+            break
+            
+    return start
+    
 
-def solution(new_id):
-    st = new_id
-    st = st.lower()
-    st = re.sub('[^a-z0-9\-_.]', '', st)
-    st = re.sub('\.+', '.', st)
-    st = re.sub('^[.]|[.]$', '', st)
-    st = 'a' if len(st) == 0 else st[:15]
-    st = re.sub('^[.]|[.]$', '', st)
-    st = st if len(st) > 2 else st + "".join([st[-1] for i in range(3-len(st))])
-    return st
+def solution(w, s, index):
+    answer = ''
+    skip = []
+    for i in s:
+        tmp = ord(i)
+        skip.append(tmp)
+    skip.sort()
+    
+    for i in w:
+        tmp = ord(i)
+        val = count_skip(tmp,skip,index)
+        tmp2 = chr(val)
+        answer+=tmp2
+        
+        
+    return answer
